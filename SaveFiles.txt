@@ -1,0 +1,558 @@
+Swag
+1
+0
+5
+0
+0
+49
+53
+53
+49
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+
+Swag
+2
+0
+5
+0
+0
+49
+53
+53
+49
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+36
+7
+0
+0
+26
+21
+61
+86
+Splash,Normal/0
+Splash,Normal/0
+Splash,Normal/0
+Splash,Normal/0
+
+Ryan
+2
+3
+5
+0
+0
+43
+64
+54
+69
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+41
+3
+0
+0
+67
+82
+62
+92
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+
+Ryan
+3
+3
+5
+0
+0
+43
+64
+54
+69
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+41
+3
+0
+0
+67
+82
+62
+92
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+45
+5
+0
+0
+48
+71
+57
+57
+Wrap,Normal/15
+Wrap,Normal/15
+Twister,Dragon/40
+Twister,Dragon/40
+
+Ryan
+6
+41
+5
+40
+5
+69
+84
+64
+94
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+3
+5
+2
+0
+43
+64
+54
+69
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+34
+2
+0
+0
+45
+85
+45
+75
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+38
+4
+4
+4
+98
+88
+73
+53
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+24
+4
+0
+0
+38
+58
+53
+93
+Thunder Shock,Electric/40
+Thunder Shock,Electric/40
+Thunder Shock,Electric/40
+Thunder Shock,Electric/40
+48
+5
+14
+0
+110
+158
+94
+134
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+
+Uber
+6
+5
+100
+40
+5
+650
+650
+650
+650
+Shadow Claw,Ghost/70
+Hurricane,Flying/110
+Blast Burn,Fire/150
+Dragon Claw,Dragon/80
+35
+100
+2
+0
+650
+650
+650
+650
+Dream Eater,Psychic/100
+Dark Pulse,Dark/80
+Shadow Ball,Ghost/80
+Sludge Bomb,Poison/80
+37
+100
+0
+0
+650
+650
+650
+650
+Thunder,Electric/120
+Thrash,Normal/120
+Crunch,Dark/80
+Hydro Cannon,Water/150
+49
+100
+4
+4
+999
+999
+999
+999
+Solar Beam,Grass/120
+Overheat,Fire/140
+Sky Attack,Flying/140
+Draco Meteor,Dragon/140
+25
+100
+0
+0
+650
+650
+650
+650
+Thunder,Electric/120
+Iron Tail,Steel/100
+Brick Break,Fighting/75
+Dig,Ground/80
+48
+100
+600
+600
+700
+700
+700
+700
+Future Sight,Psychic/120
+Shadow Ball,Ghost/80
+Energy Ball,Grass/80
+Focus Blast,Fighting/120
+
+Ryan
+6
+41
+6
+43
+43
+70
+85
+65
+95
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+3
+5
+2
+0
+43
+64
+54
+69
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+Scratch,Normal/50
+34
+2
+0
+0
+45
+85
+45
+75
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+38
+4
+4
+4
+98
+88
+73
+53
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+48
+6
+15
+15
+111
+159
+95
+135
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+43
+5
+10
+10
+94
+129
+94
+104
+Peck,Flying/35
+Thunder Shock,Electric/40
+Fly,Flying/90
+Thunder Shock,Electric/40
+
+Ryan
+6
+3
+15
+41
+12
+71
+65
+60
+70
+Ember,Fire/40
+Scratch,Normal/50
+Dragon Rage,Dragon/40
+Scratch,Normal/50
+41
+7
+60
+56
+71
+86
+66
+96
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+34
+5
+16
+11
+48
+88
+48
+78
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+38
+6
+25
+21
+100
+90
+75
+55
+Water Pulse,Water/60
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+48
+7
+26
+26
+112
+160
+96
+136
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+43
+14
+51
+22
+95
+130
+95
+105
+Peck,Flying/35
+Thunder Shock,Electric/40
+Fly,Flying/90
+Thunder Shock,Electric/40
+
+Hawkman
+6
+3
+15
+40
+18
+58
+80
+65
+80
+Ember,Fire/40
+Scratch,Normal/50
+Dragon Rage,Dragon/40
+Scratch,Normal/50
+34
+5
+16
+11
+48
+88
+48
+78
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+38
+6
+25
+21
+100
+90
+75
+55
+Water Pulse,Water/60
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+48
+7
+26
+26
+112
+160
+96
+136
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+43
+14
+51
+22
+95
+130
+95
+105
+Peck,Flying/35
+Thunder Shock,Electric/40
+Fly,Flying/90
+Thunder Shock,Electric/40
+49
+12
+0
+0
+221
+371
+211
+241
+Extreme Speed,Normal/80
+Fly,Flying/90
+Crunch,Dark/80
+Dragon Pulse,Dragon/85
+
+Ryan
+6
+3
+15
+41
+12
+71
+65
+60
+70
+Ember,Fire/40
+Scratch,Normal/50
+Dragon Rage,Dragon/40
+Scratch,Normal/50
+41
+7
+60
+56
+71
+86
+66
+96
+Ice Fang,Ice/65
+Fire Fang,Fire/65
+Thunder Fang,Electric/65
+Wing Attack,Flying/60
+34
+5
+16
+11
+48
+88
+48
+78
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+Lick,Ghost/30
+38
+6
+25
+21
+100
+90
+75
+55
+Water Pulse,Water/60
+Tackle,Normal/50
+Tackle,Normal/50
+Tackle,Normal/50
+48
+7
+26
+26
+112
+160
+96
+136
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+Confusion,Psychic/50
+43
+14
+51
+22
+95
+130
+95
+105
+Peck,Flying/35
+Thunder Shock,Electric/40
+Fly,Flying/90
+Thunder Shock,Electric/40
+
