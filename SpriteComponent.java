@@ -17,9 +17,13 @@ public class SpriteComponent extends JComponent
     private BufferedImage map;
     public SpriteComponent(){
         try{
-            sprite = ImageIO.read(new File("Images/Sprite.png"));
-            map = ImageIO.read(new File("Images/map.png"));
-        }catch(IOException e){}
+            sprite = ImageIO.read(Engine.class.getResource("Images/Sprite.png"));
+            map = ImageIO.read(Engine.class.getResource("Images/map.png"));
+        }catch(IOException e){
+            System.out.println("fax:");
+            e.printStackTrace();
+            System.out.println("error!!!!!!");
+        }
     }
 
     public void moveR()

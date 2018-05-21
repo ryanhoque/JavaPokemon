@@ -24,7 +24,7 @@ public class Pokemon
     int index, Attack[] startAttacks, Attack[] levelattacks, int[] thresholds){
         this.name = name;
         String imgfilepath = "Images/Pokemon/" + name + ".png";
-        image = new ImageIcon(imgfilepath);
+        image = new ImageIcon(new ImgUtils().strToURL(imgfilepath));
         health = basehealth;
         attack = baseattack;
         defense = basedefense;
@@ -48,7 +48,7 @@ public class Pokemon
 
     public Pokemon(int index){//to generate a Pokemon from the database that can be manipulated without affecting the database
         this.name = Database.pokemon.get(index).getName();
-        this.image = new ImageIcon("Images/" + name + ".png");
+        this.image = new ImageIcon(new ImgUtils().strToURL("Images/Pokemon/" + name + ".png"));
         this.evolutionlevel = Database.pokemon.get(index).getEvolutionLevel();
         this.nextevolutionlevel = Database.pokemon.get(index).getNextEvolutionLevel();
         this.catchrate = Database.pokemon.get(index).getCatchRate();
@@ -72,7 +72,7 @@ public class Pokemon
     public Pokemon(int index, int level, int xp, int lastxp, int health, int attack, int defense,
     int speed, Attack[] attacks){//construct a pokemon from a save file with its mutable stats
         this.name = Database.pokemon.get(index).getName();
-        this.image = new ImageIcon("Images/" + name + ".png");
+        this.image = new ImageIcon(new ImgUtils().strToURL("Images/Pokemon/" + name + ".png"));
         this.evolutionlevel = Database.pokemon.get(index).getEvolutionLevel();
         this.nextevolutionlevel = Database.pokemon.get(index).getNextEvolutionLevel();
         this.catchrate = Database.pokemon.get(index).getCatchRate();
@@ -95,7 +95,7 @@ public class Pokemon
 
     public void gainXP(int xp){
         this.xp += xp;
-        if(level<100) JOptionPane.showMessageDialog(GUI.pokemonlist, name + " gained " + xp + " XP!", "", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/Pokeball.png"));
+        if(level<100) JOptionPane.showMessageDialog(GUI.pokemonlist, name + " gained " + xp + " XP!", "", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(new ImgUtils().strToURL("Images/Pokeball.png")));
         if(level<5){
             if(this.xp-lastxp>=1) levelUp();        
         }
@@ -116,20 +116,20 @@ public class Pokemon
         GUI.pname.setText(name+" (Level " + level + ")");
         Sound.trainerbattle.stop();
         Sound.victory.play();
-        JOptionPane.showMessageDialog(GUI.pokemonlist, "Congratulations!\n" + name + " leveled up to level " + level + "!", name+" leveled up!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/Pokeball.png"));
+        JOptionPane.showMessageDialog(GUI.pokemonlist, "Congratulations!\n" + name + " leveled up to level " + level + "!", name+" leveled up!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(new ImgUtils().strToURL("Images/Pokeball.png")));
         if(level<32){
             attack+=1;
             defense+=1;
             speed+=1;
             health+=1;
-            JOptionPane.showMessageDialog(GUI.pokemonlist, "Attack + 1\nDefense + 1\nSpeed + 1\nHealth + 1", "Stat Changes", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/Pokeball.png"));
+            JOptionPane.showMessageDialog(GUI.pokemonlist, "Attack + 1\nDefense + 1\nSpeed + 1\nHealth + 1", "Stat Changes", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(new ImgUtils().strToURL("Images/Pokeball.png")));
         }
         else{
             attack+=4;
             defense+=4;
             speed+=4;
             health+=4;
-            JOptionPane.showMessageDialog(GUI.pokemonlist, "Attack + 4\nDefense + 4\nSpeed + 4\nHealth + 4", "Stat Changes", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/Pokeball.png"));
+            JOptionPane.showMessageDialog(GUI.pokemonlist, "Attack + 4\nDefense + 4\nSpeed + 4\nHealth + 4", "Stat Changes", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(new ImgUtils().strToURL("Images/Pokeball.png")));
         }
         for(int i = 0; i < thresholds.length; i++){
             if(thresholds[i]==level) learnAttack(levelattacks[i]);
@@ -152,7 +152,7 @@ public class Pokemon
         else if(names[1].equals(choice)) attacks[1] = a;
         else if(names[2].equals(choice)) attacks[2] = a;
         else if(names[3].equals(choice)) attacks[3] = a;
-        JOptionPane.showMessageDialog(GUI.pokemonlist, name + " learned " + a.getName() + "!", "Success!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/Pokeball.png"));
+        JOptionPane.showMessageDialog(GUI.pokemonlist, name + " learned " + a.getName() + "!", "Success!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(new ImgUtils().strToURL("Images/Pokeball.png")));
     }
 
     public void evolve(){

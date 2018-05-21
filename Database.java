@@ -13,7 +13,8 @@ public class Database
      */
     public Database()
     {
-        try(BufferedReader buff = new BufferedReader(new FileReader("Database.txt"))){
+        InputStream is = getClass().getResourceAsStream("/Database.txt");
+        try(BufferedReader buff = new BufferedReader(new InputStreamReader(is))){
             for(int i = 0; i < 49; i++){
                 String name = buff.readLine();
                 int health = Integer.parseInt(buff.readLine());

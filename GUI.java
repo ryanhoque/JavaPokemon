@@ -59,17 +59,18 @@ public class GUI
     }
 
     public void battleDisplay(Pokemon p, Pokemon e){
+        ImgUtils iu = new ImgUtils();
         isBattling = true;
         centerpanel.removeAll();
         centerpanel.revalidate();
         pokemonlist.removeAll();
         pokemonlist.revalidate();
         Font g = new Font(Font.SANS_SERIF, Font.BOLD, 15);
-        centerpanel.setBorder(new TitledBorder(new MatteBorder(15,15,15,15,new ImageIcon(new ImgUtils().scaleImage(15,15,"Images/Pokeball.png"))), "Battle",0,0,g,Color.BLUE));
-        pokemonlist.setBorder(new TitledBorder(new MatteBorder(15,15,15,15,new ImageIcon(new ImgUtils().scaleImage(15,15,"Images/Pokeball.png"))), "Event Log",0,0,g,Color.BLUE));
+        centerpanel.setBorder(new TitledBorder(new MatteBorder(15,15,15,15,new ImageIcon(iu.scaleImage(15,15,"Images/Pokeball.png"))), "Battle",0,0,g,Color.BLUE));
+        pokemonlist.setBorder(new TitledBorder(new MatteBorder(15,15,15,15,new ImageIcon(iu.scaleImage(15,15,"Images/Pokeball.png"))), "Event Log",0,0,g,Color.BLUE));
         centerpanel.repaint();
         pokemonlist.repaint();
-        pokemonlist.add(new JLabel(new ImageIcon(new ImgUtils().scaleImage(275,275,"Images/Pokeball.png"))));
+        pokemonlist.add(new JLabel(new ImageIcon(iu.scaleImage(275,275,"Images/Pokeball.png"))));
         centerpanel.setLayout(new GridLayout(1,3));
         JPanel playerpokemon = new JPanel();
         attackimg = new JLabel();
@@ -82,8 +83,8 @@ public class GUI
         eh = new HealthComponent();
         phtext = new JLabel("HP: " + p.getHealth() + "/" + p.getHealth());
         phtext.setFont(g);
-        pimg = new JLabel(new ImageIcon("Images/Pokemon/" + p.getName() + ".png"));
-        eimg = new JLabel(new ImageIcon("Images/Pokemon/" + e.getName() + ".png"));
+        pimg = new JLabel(new ImageIcon(iu.strToURL("Images/Pokemon/" + p.getName() + ".png")));
+        eimg = new JLabel(new ImageIcon(iu.strToURL("Images/Pokemon/" + e.getName() + ".png")));
         JPanel ehealth = new JPanel();
         ehealth.setLayout(new BorderLayout());
         ehtext = new JLabel("HP: " + e.getHealth() + "/" + e.getHealth());

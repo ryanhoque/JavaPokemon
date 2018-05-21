@@ -7,15 +7,20 @@ import java.awt.Graphics2D;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.RenderingHints;
+import java.net.URL;
 
 
 public class ImgUtils 
 //Allows other classes to rescale pictures.
 {
+    public URL strToURL(String filename) {
+        return Engine.class.getResource(filename);
+    }
+
     public BufferedImage scaleImage(int WIDTH, int HEIGHT, String filename) {
         BufferedImage bi = null;
         try {
-            ImageIcon ii = new ImageIcon(filename);
+            ImageIcon ii = new ImageIcon(strToURL(filename));
             bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = (Graphics2D) bi.createGraphics();
             g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));

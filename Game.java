@@ -8,8 +8,9 @@ public class Game
     public ArrayList<Pokemon> team = new ArrayList<Pokemon>();
     public static int avl = 5;
     public String savefile = null;
+    public ImgUtils iu = new ImgUtils();
     public void run(){
-        ImageIcon icon = new ImageIcon("Images/Pokeball.png");
+        ImageIcon icon = new ImageIcon(iu.strToURL("Images/Pokeball.png"));
         JOptionPane.showMessageDialog(GUI.frame, "Welcome to the game of Java Pokemon!\nCopyright Ryan Hoque 2015", "Welcome!", JOptionPane.INFORMATION_MESSAGE, icon);
         JOptionPane.showMessageDialog(GUI.frame, "Move with the arrow keys.\nMove in the grass to find wild pokemon.\nMove to the left clearing to battle a trainer.\nOnly wild pokemon can be caught.\nOnly trainer battles give experience.\nPress A to change the order of your team.\nPress S to save the game.", "Instructions", JOptionPane.INFORMATION_MESSAGE, icon);
         String[] c = new String[2];
@@ -101,7 +102,11 @@ public class Game
                     }
                 }
             }
-        }catch(IOException e){}
+        }catch(IOException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(GUI.frame, "There are no saved teams.");
+            System.exit(1);
+        }
         if(team.size()==0) {
             JOptionPane.showMessageDialog(GUI.frame, "There is no save file with this name. \nPlease try again or restart the program to start a new game.");
             return false;
@@ -134,7 +139,7 @@ public class Game
         Engine.gui.battleDisplay(player,p);
         int enemyRemHealth = p.getHealth();
         boolean continueBattle = true;
-        ImageIcon icon = new ImageIcon("Images/Pokeball.png");
+        ImageIcon icon = new ImageIcon(iu.strToURL("Images/Pokeball.png"));
         JOptionPane.showMessageDialog(GUI.frame, "Go " + player.getName() + "!", "", JOptionPane.INFORMATION_MESSAGE, icon);
         while(continueBattle){
             String[] choices = new String[4];
@@ -155,7 +160,7 @@ public class Game
                 else{
                     if(player.getSpeed() > p.getSpeed()){
                         //user's turn
-                        GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png"));
+                        GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png")));
                         int damage = getDamage(player.getLevel(), player.getAttack(), p.getDefense(), Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(","))));
                         if(Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(",")))==0) damage = 0;
                         else if(damage < 1) damage = 1;
@@ -186,7 +191,7 @@ public class Game
                             Attack[] enemyAtks = p.getAttacks();
                             int a = new Random().nextInt(4);
                             Attack eatk = enemyAtks[a];
-                            GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                            GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                             damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                             if(eatk.getPower()==0) damage = 0;
                             else if(damage < 1) damage = 1;
@@ -219,7 +224,7 @@ public class Game
                                     for(int i = 0; i < tempTeam.size(); i++) {
                                         if(tempTeam.get(i).getName().equals(sw)) {
                                             player = tempTeam.get(i);
-                                            GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                            GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                             GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                                             GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                             GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -237,7 +242,7 @@ public class Game
                         Attack[] enemyAtks = p.getAttacks();
                         int a = new Random().nextInt(4);
                         Attack eatk = enemyAtks[a];
-                        GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                        GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                         int damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                         if(eatk.getPower()==0) damage = 0;
                         else if(damage < 1) damage = 1;
@@ -263,7 +268,7 @@ public class Game
                         JOptionPane.showMessageDialog(GUI.pokemonlist, p.getName()+" used "+ eatk.getName() + "!\n"+message+"\n"+p.getName()+" did " + damage + " damage.", "", JOptionPane.INFORMATION_MESSAGE, icon);
                         GUI.attackimg.setIcon(null);
                         if(player.getTempHealth()>0){//user's turn
-                            GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png"));
+                            GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png")));
                             damage = getDamage(player.getLevel(), player.getAttack(), p.getDefense(), Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(","))));
                             if(Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(",")))==0) damage = 0;
                             else if(damage < 1) damage = 1;
@@ -302,7 +307,7 @@ public class Game
                                 for(int i = 0; i < tempTeam.size(); i++) {
                                     if(tempTeam.get(i).getName().equals(sw)) {
                                         player = tempTeam.get(i);
-                                        GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                        GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                         GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                                         GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                         GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -353,7 +358,7 @@ public class Game
                     Attack[] enemyAtks = p.getAttacks();
                     int a = new Random().nextInt(4);
                     Attack eatk = enemyAtks[a];
-                    GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                    GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                     int damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                     if(eatk.getPower()==0) damage = 0;
                     else if(damage < 1) damage = 1;
@@ -388,7 +393,7 @@ public class Game
                             for(int i = 0; i < tempTeam.size(); i++) {
                                 if(tempTeam.get(i).getName().equals(sw)) {
                                     player = tempTeam.get(i);
-                                    GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                    GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                     GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                                     GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                     GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -414,7 +419,7 @@ public class Game
                 for(int i = 0; i < tempTeam.size(); i++) {
                     if(tempTeam.get(i).getName().equals(sw)) {
                         player = tempTeam.get(i);
-                        GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                        GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                         GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                         GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                         GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -426,7 +431,7 @@ public class Game
                     Attack[] enemyAtks = p.getAttacks();
                     int a = new Random().nextInt(4);
                     Attack eatk = enemyAtks[a];
-                    GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                    GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                     int damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                     if(eatk.getPower()==0) damage = 0;
                     else if(damage < 1) damage = 1;
@@ -461,7 +466,7 @@ public class Game
                             for(int i = 0; i < tempTeam.size(); i++) {
                                 if(tempTeam.get(i).getName().equals(sw2)) {
                                     player = tempTeam.get(i);
-                                    GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                    GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                     GUI.pname.setText(sw2 + " (Level " + player.getLevel() + ")");
                                     GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                     GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -509,7 +514,7 @@ public class Game
         Engine.gui.battleDisplay(player,p);
         int enemyRemHealth = p.getHealth();
         boolean continueBattle = true;
-        ImageIcon icon = new ImageIcon("Images/Pokeball.png");
+        ImageIcon icon = new ImageIcon(iu.strToURL("Images/Pokeball.png"));
         JOptionPane.showMessageDialog(GUI.frame, "Go " + player.getName() + "!", "", JOptionPane.INFORMATION_MESSAGE, icon);
         JOptionPane.showMessageDialog(GUI.pokemonlist, "The rival trainer has " + team.size() + " pokemon.", "", JOptionPane.INFORMATION_MESSAGE, icon);
         while(continueBattle){
@@ -529,7 +534,7 @@ public class Game
                 else{
                     if(player.getSpeed() > p.getSpeed()){
                         //user's turn
-                        GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png"));
+                        GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png")));
                         int damage = getDamage(player.getLevel(), player.getAttack(), p.getDefense(), Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(","))));
                         if(Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(",")))==0) damage = 0;
                         else if(damage < 1) damage = 1;
@@ -560,7 +565,7 @@ public class Game
                             Attack[] enemyAtks = p.getAttacks();
                             int a = new Random().nextInt(4);
                             Attack eatk = enemyAtks[a];
-                            GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                            GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                             damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                             if(eatk.getPower()==0) damage = 0;
                             else if(damage < 1) damage = 1;
@@ -593,7 +598,7 @@ public class Game
                                     for(int i = 0; i < tempTeam.size(); i++) {
                                         if(tempTeam.get(i).getName().equals(sw)) {
                                             player = tempTeam.get(i);
-                                            GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                            GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                             GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                                             GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                             GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -622,7 +627,7 @@ public class Game
                                 enemyTeam.remove(p);
                                 p = enemyTeam.get(0);
                                 enemyRemHealth = p.getHealth();
-                                GUI.eimg.setIcon(new ImageIcon("Images/Pokemon/" + p.getName() + ".png"));
+                                GUI.eimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + p.getName() + ".png")));
                                 GUI.ename.setText(p.getName() + " (Level " + p.getLevel() + ")");
                                 GUI.ehtext.setText("HP: " + enemyRemHealth + "/" + p.getHealth());
                                 GUI.eh.loseHealth(enemyRemHealth, p.getHealth());
@@ -636,7 +641,7 @@ public class Game
                         Attack[] enemyAtks = p.getAttacks();
                         int a = new Random().nextInt(4);
                         Attack eatk = enemyAtks[a];
-                        GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                        GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                         int damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                         if(eatk.getPower()==0) damage = 0;
                         else if(damage < 1) damage = 1;
@@ -662,7 +667,7 @@ public class Game
                         JOptionPane.showMessageDialog(GUI.pokemonlist, p.getName()+" used "+ eatk.getName() + "!\n"+message+"\n"+p.getName()+" did " + damage + " damage.", "", JOptionPane.INFORMATION_MESSAGE, icon);
                         GUI.attackimg.setIcon(null);
                         if(player.getTempHealth()>0){//user's turn
-                            GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png"));
+                            GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+atkc.substring(atkc.indexOf("Type:")+6, atkc.indexOf(")"))+"Attack.png")));
                             damage = getDamage(player.getLevel(), player.getAttack(), p.getDefense(), Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(","))));
                             if(Integer.parseInt(atkc.substring(atkc.indexOf("Power:")+7, atkc.indexOf(",")))==0) damage = 0;
                             else if(damage < 1) damage = 1;
@@ -702,7 +707,7 @@ public class Game
                                     enemyTeam.remove(p);
                                     p = enemyTeam.get(0);
                                     enemyRemHealth = p.getHealth();
-                                    GUI.eimg.setIcon(new ImageIcon("Images/Pokemon/" + p.getName() + ".png"));
+                                    GUI.eimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + p.getName() + ".png")));
                                     GUI.ename.setText(p.getName() + " (Level " + p.getLevel() + ")");
                                     GUI.ehtext.setText("HP: " + enemyRemHealth + "/" + p.getHealth());
                                     GUI.eh.loseHealth(enemyRemHealth, p.getHealth());
@@ -722,7 +727,7 @@ public class Game
                                 for(int i = 0; i < tempTeam.size(); i++) {
                                     if(tempTeam.get(i).getName().equals(sw)) {
                                         player = tempTeam.get(i);
-                                        GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                        GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                         GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                                         GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                         GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -751,7 +756,7 @@ public class Game
                 for(int i = 0; i < tempTeam.size(); i++) {
                     if(tempTeam.get(i).getName().equals(sw)) {
                         player = tempTeam.get(i);
-                        GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                        GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                         GUI.pname.setText(sw + " (Level " + player.getLevel() + ")");
                         GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                         GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -763,7 +768,7 @@ public class Game
                     Attack[] enemyAtks = p.getAttacks();
                     int a = new Random().nextInt(4);
                     Attack eatk = enemyAtks[a];
-                    GUI.attackimg.setIcon(new ImageIcon("Images/Attacks/"+eatk.getType()+"AttackI.png"));
+                    GUI.attackimg.setIcon(new ImageIcon(iu.strToURL("Images/Attacks/"+eatk.getType()+"AttackI.png")));
                     int damage = getDamage(p.getLevel(), p.getAttack(), player.getDefense(), eatk.getPower());
                     if(eatk.getPower()==0) damage = 0;
                     else if(damage < 1) damage = 1;
@@ -798,7 +803,7 @@ public class Game
                             for(int i = 0; i < tempTeam.size(); i++) {
                                 if(tempTeam.get(i).getName().equals(sw2)) {
                                     player = tempTeam.get(i);
-                                    GUI.pimg.setIcon(new ImageIcon("Images/Pokemon/" + sw + ".png"));
+                                    GUI.pimg.setIcon(new ImageIcon(iu.strToURL("Images/Pokemon/" + sw + ".png")));
                                     GUI.pname.setText(sw2 + " (Level " + player.getLevel() + ")");
                                     GUI.phtext.setText("HP: " + player.getTempHealth() + "/" + player.getHealth());
                                     GUI.ph.loseHealth(player.getTempHealth(), player.getHealth());
@@ -838,7 +843,7 @@ public class Game
         String[] others = new String[team.size()-1];
         for(int i = 0; i < team.size()-1; i++) others[i] = team.get(i+1).getName();
         String sw = "";
-        if(others.length>0) sw = (String) JOptionPane.showInputDialog(GUI.frame, "Which pokemon would you like to switch into first place?","",JOptionPane.QUESTION_MESSAGE,new ImageIcon("Images/Pokeball.png"),others,others[0]);
+        if(others.length>0) sw = (String) JOptionPane.showInputDialog(GUI.frame, "Which pokemon would you like to switch into first place?","",JOptionPane.QUESTION_MESSAGE,new ImageIcon(iu.strToURL("Images/Pokeball.png")),others,others[0]);
         for(int i = 1; i < team.size(); i++) {
             if(team.get(i).getName().equals(sw)) {
                 Pokemon temp = team.get(i);
